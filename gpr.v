@@ -7,8 +7,8 @@ module gpr(
 reg [15:0] gprarray [7:0];
 assign rd1 = gprarray[rs1];
 assign rd2 = gprarray[rs2];
-integer i;
 
+integer i;
 initial begin
     for(i=0;i<8;i++)
         gprarray[i] <= 16'b0;
