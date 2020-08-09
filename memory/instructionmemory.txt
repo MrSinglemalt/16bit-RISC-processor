@@ -4,5 +4,5 @@
 0010_0000_0101_0000 // 0004: R2= R0+ R1
 0001_0010_1000_0000 // 0006: Mem[R1]=R2 (that is Mem[1]=R2
 0000_0010_0000_0000 // 0008: R0=Mem[R1]
-1101_0000_0000_0011 // 000A: Jump to location #4 (CPU will multiply by 2 and add 2)
+1101_0000_0000_0010 // 000A: Jump to location #4 (CPU will multiply by 2 and add 2)
 // no instruction at 000C, but PC will hang there while it processes jump
