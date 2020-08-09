@@ -1,8 +1,6 @@
-0000_0100_0000_0000 // 0000: Load R0 <- Mem(R2+ 0) since R2=0 this puts 1 in R0
-0000_0100_0100_0000 // 0002: Load the same in R1 (R1 will always contain 1)
-// location 8 (byte), 4 (word):
-0010_0000_0101_0000 // 0004: R2= R0+ R1
-0001_0010_1000_0000 // 0006: Mem[R1]=R2 (that is Mem[1]=R2
-0000_0010_0000_0000 // 0008: R0=Mem[R1]
-1101_0000_0000_0010 // 000A: Jump to location #4 (CPU will multiply by 2 and add 2)
-// no instruction at 000C, but PC will hang there while it processes jump
+0000_0100_0000_0000 //: Load R0 <- Mem(R2+ 0) since R2=0 this puts 1 in R0
+0000_0100_0100_0000 //: Load the same in R1 (R1 will always contain 1)
+0010_0000_0101_0000 //: ADD R2= R0+ R1
+0001_0010_1000_0000 //: STORE Mem[R1]=R2 (that is Mem[1]=R2
+0000_0010_0000_0000 //: LOAD R0=Mem[R1]
+1101_0000_0000_0010 //: Jump (3이면 4번을 수행)
