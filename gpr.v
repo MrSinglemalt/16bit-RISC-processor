@@ -2,7 +2,8 @@ module gpr(
     input clk,
     input wire we, //write enable
     input wire [2:0] rs1, rs2,ws, //read ,write 할 address
-    output wire [15:0] rd1,rd2,wd     //rs1, rs2 주소에 있는 data
+    input wire [15:0] wd,
+    output wire [15:0] rd1,rd2     //rs1, rs2 주소에 있는 data
 );
 reg [15:0] gprarray [7:0];
 assign rd1 = gprarray[rs1];
