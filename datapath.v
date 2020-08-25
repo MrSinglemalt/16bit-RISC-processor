@@ -15,7 +15,7 @@ wire [15:0] pc_plus2;
 assign pc_plus2 = pc+ 16'd2;
 
 assign opcode = instruction[15:12];
-wire [15:0] rd1,rd2,wd; //gpr
+wire [15:0] rd1,rd2,wd; //gpr   
 wire [2:0] rs1, rs2, ws;
 assign rs1 = instruction[11:9];
 assign rs2 = instruction[8:6];
@@ -27,10 +27,10 @@ assign immext = {{10{instruction[5]}},instruction[5:0]}; //extend branch offset
 wire [15:0] b;
 assign b = alu_src? immext : rd2; //alu_src = 1이면 주소값을 가져가서 rd1과 더함(load,store 할 주소생성)
 
-/// branch, jump를 위한 pc변경
+/// branch, jump를 위한 pc변경 
 wire [15:0] pc_branch, pc_jump, pc_next;
-assign pc_branch = pc_plus2 + immext;
-assign pc_jump = {pc_plus2[15:13], instruction[11:0],1'b0}; //다음pc 앞3개가져오고, word단위 맞추기 위해 뒤에 0붙임. 
+assign pc_branch = pc_plus2 + {immext[14:0],1'b0};
+assign pc_jump = {pc_plus2[15:13], instruction[11:0],1'b0}; //다음pc 앞3개가져오고, inst~~.v에서 right shift하며 받으니 미리 left shift해서 전달. 
 wire iszero; //beq, bne 비교 결과값 (beq에서 조건맞으면 1, bne에서 조건맞으면 0)
 assign pc_next = j? pc_jump : (((beq&iszero) | (bne&(~iszero))))? pc_branch : pc_plus2 ;
 
